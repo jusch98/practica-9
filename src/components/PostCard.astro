@@ -1,0 +1,35 @@
+---
+// Suponemos que tienes una variable isSubscribed que indica si el usuario está suscrito.
+const { title, description, image, slug, isSubscribed } = Astro.props;
+---
+
+<section id="ultimasPublicaciones" class="bg-slate-50 p-6 rounded-lg shadow-xl text-slate-800">
+  <!-- Título de la publicación -->
+  <h2 class="text-2xl text-center text-slate-800 font-Akira font-bold mb-4">{title}</h2>
+  
+  <!-- Imagen de la publicación con tamaño fijo -->
+  <div class="relative w-full h-72 mb-6">
+    <img 
+      src={image} 
+      alt={title} 
+      class="object-cover w-full h-full rounded-md transition-transform duration-300 ease-in-out hover:scale-105"
+    />
+  </div>
+  
+  <!-- Descripción recortada -->
+  <p class="text-slate-800">{description.substring(0, 150)}...</p>
+  
+  <!-- Enlace para leer más -->
+  <a href={`/blog/${slug}`} class="text-orange-500 hover:text-orange-400 mt-6 block font-bold text-lg transition duration-200">Leer</a>
+
+  <!-- Botón de compra -->
+  {isSubscribed ? (
+    <a href={`/comprar/${slug}`} class="mt-4 inline-block px-6 py-3 bg-blue-500 text-white font-bold text-lg rounded-md hover:bg-blue-400 transition duration-200">
+      Comprar Curso
+    </a>
+  ) : (
+    <p class="mt-4 text-red-500 font-bold">
+      Debes suscribirte para comprar este curso.
+    </p>
+  )}
+</section>

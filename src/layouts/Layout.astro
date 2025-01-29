@@ -3,22 +3,25 @@ import Header from "../components/Header.astro";
 import Video from "../components/Video.astro";
 import Titulo from "../components/Titulo.astro";
 import Slider from "../components/Slider.jsx";
-import Body from "../components/Body.astro";
 import Footer from "../components/Footer.astro";
-
+import Post from "../components/Post.astro";
+import '../styles/global.css' 
 
 ---
 
 <html>
   <head>
     <title>Plataforma de Venta de Cursos</title>
+
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-white">
     <Header />
     <Video/>
     <Titulo/>
-    <Slider />
-    <Body />
+    <Slider client:load/>
+    <main class="container mx-auto px-4 flex-1">
+      <Post/>
+    </main>
     <Footer />
   </body>
 </html>
